@@ -2,6 +2,8 @@ FROM ubuntu
 
 RUN apt-get -y update
 
+ENV TZ=Europe/Kiev
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt install -y apache2
 
 RUN a2enmod ssl && a2enmod proxy && a2enmod proxy_http
